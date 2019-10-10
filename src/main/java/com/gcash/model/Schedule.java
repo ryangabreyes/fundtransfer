@@ -4,8 +4,27 @@ import com.gcash.enums.FundTransferMode;
 
 public class Schedule {
 
-    private String depositEvery;
+    private String every;
+
     private FundTransferMode mode;
+
+    private String time;
+
+    public String getEvery() {
+        return every;
+    }
+
+    public void setEvery(String every) {
+        this.every = every;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     public FundTransferMode getMode() {
         return mode;
@@ -13,23 +32,5 @@ public class Schedule {
 
     public void setMode(FundTransferMode mode) {
         this.mode = mode;
-    }
-
-    private double amount;
-
-    public String getDepositEvery() {
-        return depositEvery;
-    }
-
-    public void setDepositEvery(String depositEvery) {
-        this.depositEvery = depositEvery;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
     }
 }

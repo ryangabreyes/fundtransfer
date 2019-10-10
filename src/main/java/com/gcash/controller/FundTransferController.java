@@ -1,9 +1,7 @@
 package com.gcash.controller;
 
-import com.gcash.model.FundTransferRequest;
-import com.gcash.model.FundTransferResponse;
-import com.gcash.model.ScheduleRequest;
-import com.gcash.model.ScheduleResponse;
+import com.gcash.mapper.ScheduleMapper;
+import com.gcash.model.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,11 +9,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FundTransferController {
 
+    private ScheduleMapper scheduleMapper;
+
+    public FundTransferController(ScheduleMapper scheduleMapper) {
+        this.scheduleMapper = scheduleMapper;
+    }
+
     @PostMapping("/addSchedule")
     public FundTransferResponse addSchedule(@RequestBody FundTransferRequest request) {
+
+        for(Schedule schedule : request.getSchedules()) {
+
+        }
+
+
         FundTransferResponse response = new FundTransferResponse();
 
-        response.setBank_code(request.getBank_code());
+
 
         return response;
     }
@@ -23,6 +33,8 @@ public class FundTransferController {
     @PostMapping("/getSchedule")
     public ScheduleResponse getSchedule(@RequestBody ScheduleRequest request) {
         ScheduleResponse response = new ScheduleResponse();
+
+        response.setSchedules(scheduleMapper.getAllSchedule());
 
         return response;
     }
